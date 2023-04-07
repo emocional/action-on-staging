@@ -1,0 +1,35 @@
+name: to staging
+description: 'rebase main onto develop without force'
+
+branding:
+  icon: 'aperture'
+  color: 'purple'
+
+inputs:
+  git-name:
+    description: git user name
+    default: I am your father
+  git-mail:
+    description: git user email
+    default: noreply@github.com
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        ref: main
+
+    - uses: emocional/action-git-config@main
+      with:
+        git-mail: ${{ inputs.git-mail }}
+        git-user: ${{ inputs.git-user }}
+
+    - name: Rebase main onto develop
+      shell: sh
+      run: |
+        git fetch origin develop
+        git rebase origin/develop
+        git push origin main

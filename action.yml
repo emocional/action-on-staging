@@ -25,7 +25,7 @@ runs:
     - uses: emocional/action-git-config@main
       with:
         git-mail: ${{ inputs.git-mail }}
-        git-user: ${{ inputs.git-user }}
+        git-name: ${{ inputs.git-name }}
 
     - name: Rebase main onto develop
       shell: sh

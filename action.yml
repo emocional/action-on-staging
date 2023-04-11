@@ -11,7 +11,7 @@ inputs:
     default: I am your father
   git-mail:
     description: git user email
-    default: noreply@github.com
+    default: 121049410+i-amyourfather@users.noreply.github.com
 
 runs:
   using: 'composite'

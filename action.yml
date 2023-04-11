@@ -19,7 +19,6 @@ runs:
     - name: Checkout repository
       uses: actions/checkout@v2
       with:
-        fetch-depth: 0
         ref: main
 
     - uses: emocional/action-git-config@main

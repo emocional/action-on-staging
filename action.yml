@@ -6,12 +6,14 @@ branding:
   color: 'purple'
 
 inputs:
-  git-name:
-    description: git user name
-    default: I am your father
-  git-mail:
-    description: git user email
-    default: 121049410+i-amyourfather@users.noreply.github.com
+  app-key:
+    description: github app private key
+  app-id:
+    description: github app id
+  app-email:
+    description: github app no reply email
+  app:
+    description: github app name
 
 runs:
   using: 'composite'
@@ -23,8 +25,11 @@ runs:
 
     - uses: emocional/action-git-config@main
       with:
-        git-mail: ${{ inputs.git-mail }}
-        git-name: ${{ inputs.git-name }}
+        app: ${{ inputs.app }}
+        app-id: ${{ inputs.app-id }}
+        app-email: ${{ inputs.app-email }}
+        app-key: ${{ inputs.app-key }}
+      id: get_token
 
     - name: Rebase main onto develop
       shell: sh
